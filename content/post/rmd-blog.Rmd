@@ -1,0 +1,84 @@
+---
+title: "Using R Markdown to Create a Blog"
+date: '2016-08-07'
+disqusIdentifier: 834cd104-308c-11e7-a672-34e6ad57b5ca
+keywords: blog
+tags:
+- r
+- rmd
+- blog
+comments: yes
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(ggplot2)
+library(ggthemes)
+library(DT)
+library(xts)
+library(dygraphs)
+```
+
+<br>
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+The R package rmarkdown can be used to [create websites](http://rmarkdown.rstudio.com/rmarkdown_websites.html) quickly and easily. If you are only interested in generating static content, which can include [interactive charts using javascript](http://gallery.htmlwidgets.org/), Github has free hosting through <https://pages.github.com>.
+
+## Including Code and Graphs
+
+By using a format like R Markdown, you can write stories along with creating plots, for example:
+
+<br>
+
+### Plane Engines Have Become More Powerful, Allowing More Passengers
+
+<br>
+
+```{r planes, echo=TRUE, warning=FALSE}
+ggplot(data=filter(nycflights13::planes, engines == 2), 
+       aes(x=year, y=seats)) +
+    geom_smooth() +
+    theme_minimal(base_size = 16)
+```
+
+<br>
+
+### Wind Speed and Temperature at Newark Liberty International Airport in 2013
+
+<br>
+
+```{r weather, echo=TRUE, warning=FALSE}
+df = nycflights13::weather %>%
+    filter(wind_speed < 200 & origin == "EWR") %>% # remove outliers
+    select(time_hour, wind_speed, temp) %>% 
+    sample_n(365*2) # sample to reduce noise
+    
+dygraph(as.xts(x = df[,-1], order.by = df$time_hour)) %>%
+    dyAxis("x", drawGrid = FALSE) %>%
+    dyAxis("y", drawGrid = FALSE) %>%
+    dyRangeSelector()
+```
+
+<br><br>
+
+### Showing off the Diamonds dataset from ggplot2
+
+
+```{r diamonds, warning=FALSE}
+# library(htmltools)
+# library(htmlwidgets)
+knitr::kable(diamonds %>% select(-x, -y, -z) %>% sample_n(10))
+# d1 <- DT::datatable((diamonds %>% select(-x, -y, -z) %>% sample_n(500)))
+# saveWidget(d1, file = "d1.html", selfcontained = TRUE)
+```
+
+<!-- <iframe seamless src="d1.html" width="100%" height="500"></iframe> -->
+
+*Edit: Previously this table used DT::datatable() to show off the datatables jquery plugin, but blogdown/hugo aren't rendering that correctly so I just used old fashioned knitr::kable()*

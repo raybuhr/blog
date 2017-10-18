@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on the raybuhr blog</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on the raybuhr blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 May 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Welcome!</title>
+      <link>/2017/05/welcome/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/05/welcome/</guid>
+      <description>Welcome to my blog! Here I’ll explore interesting and/or confusing topics in technology and data science and hopefully build a useful reference to my future self and perhaps others.</description>
+    </item>
+    
+  </channel>
+</rss>

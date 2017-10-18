@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on the raybuhr blog</title>
+    <link>https://raybuhr.github.io/post/</link>
+    <description>Recent content in Posts on the raybuhr blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://raybuhr.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Making Predictions over HTTP with R</title>
+      <link>https://raybuhr.github.io/2017/10/making-predictions-over-http/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://raybuhr.github.io/2017/10/making-predictions-over-http/</guid>
+      <description>Using R as a Production Machine Learning Language Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.</description>
+    </item>
+    
+    <item>
+      <title>Using Hugo and Blogdown</title>
+      <link>https://raybuhr.github.io/2017/05/using-hugo-and-blogdown/</link>
+      <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://raybuhr.github.io/2017/05/using-hugo-and-blogdown/</guid>
+      <description>Redesign Hugo Blogdown Lessons Learned Using Github Pages to Host   Redesign My previous blog design, as last blog post, used Rmarkdown (.Rmd) to create and build out the site. Rmarkdown is a really powerful way to communicate using the tools that R provides, but it is really slow and painful to rebuild every post each time you make a change to the site. Also, while you can always add custom css styling to your site and your Rmarkdown files, I found that it was difficult to not spend countless hours doing so and still end up with something I really liked.</description>
+    </item>
+    
+    <item>
+      <title>Welcome!</title>
+      <link>https://raybuhr.github.io/2017/05/welcome/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://raybuhr.github.io/2017/05/welcome/</guid>
+      <description>Welcome to my blog! Here I’ll explore interesting and/or confusing topics in technology and data science and hopefully build a useful reference to my future self and perhaps others.</description>
+    </item>
+    
+    <item>
+      <title>Using R Markdown to Create a Blog</title>
+      <link>https://raybuhr.github.io/2016/08/using-r-markdown-to-create-a-blog/</link>
+      <pubDate>Sun, 07 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://raybuhr.github.io/2016/08/using-r-markdown-to-create-a-blog/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+The R package rmarkdown can be used to create websites quickly and easily. If you are only interested in generating static content, which can include interactive charts using javascript, Github has free hosting through https://pages.</description>
+    </item>
+    
+    <item>
+      <title>Are Tech Jobs Really Down This Year?</title>
+      <link>https://raybuhr.github.io/2016/07/are-tech-jobs-really-down-this-year/</link>
+      <pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://raybuhr.github.io/2016/07/are-tech-jobs-really-down-this-year/</guid>
+      <description>A few weeks ago, one of my fellow MIDS colleagues shared this article, Tech job postings are down 40% and nobody’s talking about it. As a data skeptic, I wondered if it was true.
+
+ 
+Surely, this source had insight that I didn’t and maybe it was skewed to the job markets that company operates in, but I have really only seen more and more growth of tech jobs here in Chicago.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://raybuhr.github.io/2016/07/about/</link>
+      <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://raybuhr.github.io/2016/07/about/</guid>
+      <description>This website I wanted to create a blog where I can explore questions I have and show how I use data to do so… so here it is.
+ Me I’m an INTJ, which means I like spending time thinking about the big picture and then carrying out tasks to make it work. It also means I don’t just accept ideas, but have to compare the evidence for them against the representation of the world I’ve built.</description>
+    </item>
+    
+  </channel>
+</rss>
