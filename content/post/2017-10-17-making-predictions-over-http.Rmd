@@ -19,7 +19,7 @@ tags:
 
 ---
 
-## Using R as a Production Machine Learning Language
+## Using R as a Production Machine Learning Language (Part I)
 
 There's often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models. Understandably, many programmers come from languages that don't behave quite like R does and focus on libraries that R has few of. However, R helps us solve problems of data analysis much more easily that many other languages and some statistical methods have only been implemented in R. This post has two main goals:
 
@@ -27,8 +27,9 @@ There's often confusion amoung the data science and machine learning crowd about
 2. helping data scientists use their predictive models in reliable business settings.
 
 
-Specifically, I want to demonstrate how we can take a trained predictive model (i.e. statistical learning model or machine learning model) and deploy it to a server as a RESTful API that accepts JSON requests and returns JSON responses. To do this, we will use the package [plumber](https://www.rplumber.io/) and the [Google Cloud Platform](https://cloud.google.com/) as our hosting provider. 
+Specifically, I want to demonstrate how we can take a trained predictive model (i.e. statistical learning model or machine learning model) and deploy it to a server as a RESTful API that accepts JSON requests and returns JSON responses. To do this, we will use the package [plumber](https://www.rplumber.io/). By the end of the post we'll have R code that allows us access a website through the browser or programmatically in order to get predictions.
 
+![what we'll have at the end of this blog post](/img/plumber_firefox_screenshot.png)
 
 _Note: The plumber github repo has a giant warning about breaking changes coming in version 0.4. This is a GOOD thing! When developing an API like this, you probably want to run it locally in development and run it locally behind a serious web server like nginx in production. This post was created using plumber version 0.4.2 so if you follow along you should not have any problems with the version updates._
 
@@ -349,4 +350,17 @@ Once you've got your code ready, let's go through this checklist to make sure ev
 
 ## Concluding Remarks
 
+Full source code to build this plumber based API is available at [https://github.com/raybuhr/plumber-titanic](https://github.com/raybuhr/plumber-titanic). 
+
 Read through the [Plumber Documentation](https://www.rplumber.io/docs/). By default, all plumber endpoints return responses as `application/json` using the `jsonlite::toJSON` function. You can read more about alternative serializers (i.e. other types of response content) [here in the plumber docs](https://www.rplumber.io/docs/rendering-and-output.html#serializers). In my experience, you may be fine with the default serializers or you may need to get pretty deep in the weeds depending on how you need to receive and return results. 
+
+Deploy your models somewhere that is easy to find and easy to download for your servers, such as AWS S3 or Google Cloud Storage. GitHub is usually not a very good place to store models, unless they are very small and they benefit from reviewing the text differences (which `.Rds` does not). 
+
+In Part II of this post, we'll explore:
+
+* uploading our code to a version control system like GitHub
+* uploading our `.Rds` file to cloud storage
+* spinning up a virtual machine in the cloud to host our API
+* using Docker to *"containerize"* our API allowing us to run multiple instances at once 
+* using Nginx to serve up those docker instances of this API and act as a load balancer 
+

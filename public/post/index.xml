@@ -17,7 +17,7 @@
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://raybuhr.github.io/2017/10/making-predictions-over-http/</guid>
-      <description>Using R as a Production Machine Learning Language Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.</description>
+      <description>Using R as a Production Machine Learning Language (Part I) Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language (Part I) There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.</description>
     </item>
     
     <item>

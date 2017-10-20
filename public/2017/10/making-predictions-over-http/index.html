@@ -31,15 +31,15 @@
     
 
     
-    <meta name="description" content="Using R as a Production Machine Learning Language Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.">
-    <meta property="og:description" content="Using R as a Production Machine Learning Language Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.">
+    <meta name="description" content="Using R as a Production Machine Learning Language (Part I) Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language (Part I) There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.">
+    <meta property="og:description" content="Using R as a Production Machine Learning Language (Part I) Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language (Part I) There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Making Predictions over HTTP with R">
     <meta property="og:url" content="/2017/10/making-predictions-over-http/">
     <meta property="og:site_name" content="the raybuhr blog">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="the raybuhr blog">
-    <meta name="twitter:description" content="Using R as a Production Machine Learning Language Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.">
+    <meta name="twitter:description" content="Using R as a Production Machine Learning Language (Part I) Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language (Part I) There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.">
     
       <meta name="twitter:creator" content="@raybuhr">
     
@@ -214,7 +214,7 @@
             <div class="main-content-wrap">
               <div id="TOC">
 <ul>
-<li><a href="#using-r-as-a-production-machine-learning-language">Using R as a Production Machine Learning Language</a></li>
+<li><a href="#using-r-as-a-production-machine-learning-language-part-i">Using R as a Production Machine Learning Language (Part I)</a></li>
 <li><a href="#why-is-this-necessary">Why is this necessary?</a></li>
 <li><a href="#getting-started-with-plumber-on-a-trained-model">Getting Started with Plumber on a trained model</a><ul>
 <li><a href="#prepping-data">Prepping Data</a></li>
@@ -233,14 +233,18 @@
 </ul>
 </div>
 
-<div id="using-r-as-a-production-machine-learning-language" class="section level2">
-<h2>Using R as a Production Machine Learning Language</h2>
+<div id="using-r-as-a-production-machine-learning-language-part-i" class="section level2">
+<h2>Using R as a Production Machine Learning Language (Part I)</h2>
 <p>There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models. Understandably, many programmers come from languages that don’t behave quite like R does and focus on libraries that R has few of. However, R helps us solve problems of data analysis much more easily that many other languages and some statistical methods have only been implemented in R. This post has two main goals:</p>
 <ol style="list-style-type: decimal">
 <li>helping full-time developers better understand and appreciate what R is capable of;</li>
 <li>helping data scientists use their predictive models in reliable business settings.</li>
 </ol>
-<p>Specifically, I want to demonstrate how we can take a trained predictive model (i.e. statistical learning model or machine learning model) and deploy it to a server as a RESTful API that accepts JSON requests and returns JSON responses. To do this, we will use the package <a href="https://www.rplumber.io/">plumber</a> and the <a href="https://cloud.google.com/">Google Cloud Platform</a> as our hosting provider.</p>
+<p>Specifically, I want to demonstrate how we can take a trained predictive model (i.e. statistical learning model or machine learning model) and deploy it to a server as a RESTful API that accepts JSON requests and returns JSON responses. To do this, we will use the package <a href="https://www.rplumber.io/">plumber</a>. By the end of the post we’ll have R code that allows us access a website through the browser or programmatically in order to get predictions.</p>
+<div class="figure">
+<img src="https://raybuhr.github.io/img/plumber_firefox_screenshot.png" alt="what we’ll have at the end of this blog post" />
+<p class="caption">what we’ll have at the end of this blog post</p>
+</div>
 <p><em>Note: The plumber github repo has a giant warning about breaking changes coming in version 0.4. This is a GOOD thing! When developing an API like this, you probably want to run it locally in development and run it locally behind a serious web server like nginx in production. This post was created using plumber version 0.4.2 so if you follow along you should not have any problems with the version updates.</em></p>
 </div>
 <div id="why-is-this-necessary" class="section level2">
@@ -509,7 +513,17 @@ predict_survival &lt;- function(Age=NA, Pclass=NULL, Sex=NULL) {
 </div>
 <div id="concluding-remarks" class="section level2">
 <h2>Concluding Remarks</h2>
+<p>Full source code to build this plumber based API is available at <a href="https://github.com/raybuhr/plumber-titanic" class="uri">https://github.com/raybuhr/plumber-titanic</a>.</p>
 <p>Read through the <a href="https://www.rplumber.io/docs/">Plumber Documentation</a>. By default, all plumber endpoints return responses as <code>application/json</code> using the <code>jsonlite::toJSON</code> function. You can read more about alternative serializers (i.e. other types of response content) <a href="https://www.rplumber.io/docs/rendering-and-output.html#serializers">here in the plumber docs</a>. In my experience, you may be fine with the default serializers or you may need to get pretty deep in the weeds depending on how you need to receive and return results.</p>
+<p>Deploy your models somewhere that is easy to find and easy to download for your servers, such as AWS S3 or Google Cloud Storage. GitHub is usually not a very good place to store models, unless they are very small and they benefit from reviewing the text differences (which <code>.Rds</code> does not).</p>
+<p>In Part II of this post, we’ll explore:</p>
+<ul>
+<li>uploading our code to a version control system like GitHub</li>
+<li>uploading our <code>.Rds</code> file to cloud storage</li>
+<li>spinning up a virtual machine in the cloud to host our API</li>
+<li>using Docker to <em>“containerize”</em> our API allowing us to run multiple instances at once</li>
+<li>using Nginx to serve up those docker instances of this API and act as a load balancer</li>
+</ul>
 </div>
 
               
@@ -764,7 +778,7 @@ predict_survival &lt;- function(Age=NA, Pclass=NULL, Sex=NULL) {
                   Oct 10, 2017
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather">Using R as a Production Machine Learning Language Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.</div>
+              <div class="media-content hide-xs font-merryweather">Using R as a Production Machine Learning Language (Part I) Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language (Part I) There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -892,7 +906,7 @@ Surely, this source had insight that I didn’t and maybe it was skewed to the j
     
   
     
-    <div id="cover" style="background-image:url('https://raybuhr.github.io/images/img/eagle_nebula.jpg');"></div>
+    <div id="cover" style="background-image:url('https://raybuhr.github.io/images/eagle_nebula.jpg');"></div>
   
 
 
