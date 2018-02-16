@@ -39,13 +39,13 @@ Well, **it depends on your goals**. Here is my *very opinionated* take on which 
 - Pyspark is rapidly developing as a requirement for processing data out of Spark. While R also has a Spark API, in my experience it is much harder to get to work, fewer examples, fewer tutorials,  and fewer people able to help answer questions online. 
     - *Note:* RStudio has put out [`sparklyr`](http://spark.rstudio.com/) which has made developing on Spark with R so much more awesome. However, I've personally experienced Spark SQL to be often less efficient than pyspark code (I believe because of the optimizer). I'm not an expert on this, it seems to be an underground trend among the data engineers I talk to. Either way, pretty much every data scientist using Spark is using pyspark or Scala if they have to.
 - Deep learning frameworks. Yes, these also exist in R, but more jobs listing deep learning ask for python proficiency. Even the `tensorflow` port for R just wraps the python API (which is *totally fine*, but if using in production you'll want to be comfortable in both languages).
-    - *Note:* RStudio has recently released [`keras`](https://keras.rstudio.com/) for R, which makes developing deep learning in R much nicer. It installs `tensorflow` and `keras` in a python environment for you and wraps the R `tensorflow` library. Ultimately Keras models compile to C++ anyway so any model you build can be deployed in any environment that can serve models from the backend you choose (default is `tensorflow`). However, when you're getting bugs in your R `keras` code, you'll still be better off knowing some python since. 
+    - *Note:* RStudio has recently released [`keras`](https://keras.rstudio.com/) for R, which makes developing deep learning in R much nicer. It installs `tensorflow` and `keras` in a python environment for you and wraps the R `tensorflow` library. Ultimately Keras models compile to C++ anyway so any model you build can be deployed in any environment that can serve models from the backend you choose (default is `tensorflow`). However, when you're getting bugs in your R `keras` code, you'll still be better off knowing some python. 
 
 ## 2. Your goal is to become a *highly paid data scientist*: 
 
 ### **Scala**
 
-Caveat: This goal may come make it *perhaps slightly harder* time finding a job due to being "over-qualified", though hopefully not significant difficulty if you actually have **solid** data science skills.
+Caveat: This goal may eventually make it *perhaps slightly harder* finding a job due to being "over-qualified", though hopefully not significant difficulty if you actually have **solid** data science skills.
 
 - Scala is an interesting language that provides tremendous flexability to the programmer.
     - Scala is a multi-paradigm language supporting Object Oriented Programming (OOP), Functional Programming (FP -- think `tidyverse` libraries where you pipe data between functions), and pretty much everything in-between. 
