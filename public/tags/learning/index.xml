@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learning on the raybuhr blog</title>
+    <link>/tags/learning/</link>
+    <description>Recent content in Learning on the raybuhr blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Picking a Second Programming Language to Learn after R</title>
+      <link>/2018/02/picking-a-second-programming-language-to-learn-after-r/</link>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/02/picking-a-second-programming-language-to-learn-after-r/</guid>
+      <description>So what language should you learn after R? 1. Your goal is to be a very easy to employ data scientist: Python  2. Your goal is to become a highly paid data scientist: Scala  3. You want to understand how the R code you run actually works on the computer: C and a bit of C++  4. You want to do more web development OR you want lots of customization/flexibility in your interactive data visualizations: JavaScript  5.</description>
+    </item>
+    
+  </channel>
+</rss>
