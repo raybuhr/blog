@@ -20,7 +20,7 @@ I really love the R programming language. I haven't always felt that way; in fac
 - Everything is a vector?!? 
 - You can load/import code in multiple ways; `source`, `library`, `require`. 
 - The base family of [`apply`](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family) functions behave similarly yet don't pass parameters consistently 
-  - Side note: I recommend using the `purrr` library instead, but if you must go base try starting with `lapply`). 
+    - *Side note:* I recommend using the `purrr` library instead, but if you must go base try starting with `lapply`). 
 - The assignment operator `<-` can go on either side of your code! 
 
 These aspects of R are *weird*, sometimes *dangerous*, and sometimes *useful*. That's actually a good summary of programming in R in general. 
