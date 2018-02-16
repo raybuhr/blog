@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on the raybuhr blog</title>
-    <link>https://raybuhr.github.io/tags/machine-learning/</link>
+    <link>/tags/machine-learning/</link>
     <description>Recent content in Machine Learning on the raybuhr blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://raybuhr.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Making Predictions over HTTP with R</title>
-      <link>https://raybuhr.github.io/2017/10/making-predictions-over-http/</link>
+      <link>/2017/10/making-predictions-over-http/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://raybuhr.github.io/2017/10/making-predictions-over-http/</guid>
+      <guid>/2017/10/making-predictions-over-http/</guid>
       <description>Using R as a Production Machine Learning Language (Part I) Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language (Part I) There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.</description>
     </item>
     

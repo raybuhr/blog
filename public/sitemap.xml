@@ -2,157 +2,180 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://raybuhr.github.io/2017/10/making-predictions-over-http/</loc>
+    <loc>/2018/02/picking-a-second-programming-language-to-learn-after-r/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/10/making-predictions-over-http/</loc>
     <lastmod>2017-10-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/2017/05/using-hugo-and-blogdown/</loc>
+    <loc>/2017/05/using-hugo-and-blogdown/</loc>
     <lastmod>2017-05-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/2017/05/welcome/</loc>
+    <loc>/2017/05/welcome/</loc>
     <lastmod>2017-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/2016/08/using-r-markdown-to-create-a-blog/</loc>
+    <loc>/2016/08/using-r-markdown-to-create-a-blog/</loc>
     <lastmod>2016-08-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/2016/07/are-tech-jobs-really-down-this-year/</loc>
+    <loc>/2016/07/are-tech-jobs-really-down-this-year/</loc>
     <lastmod>2016-07-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/2016/07/about/</loc>
+    <loc>/2016/07/about/</loc>
     <lastmod>2016-07-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/tags/about/</loc>
-    <lastmod>2016-07-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/api/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/archives/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/blog/</loc>
-    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/blogdown/</loc>
-    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/datascience/</loc>
-    <lastmod>2016-07-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/http/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/https/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/hugo/</loc>
-    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/jobs/</loc>
-    <lastmod>2016-07-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/machine-learning/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/plumber/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/post/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/predict/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/python/</loc>
-    <lastmod>2016-07-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/r/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/rest/</loc>
-    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/rmd/</loc>
-    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://raybuhr.github.io/tags/</loc>
+    <loc>/tags/about/</loc>
     <lastmod>2016-07-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/tags/tech/</loc>
+    <loc>/tags/api/</loc>
+    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/archives/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/blog/</loc>
     <lastmod>2017-05-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://raybuhr.github.io/</loc>
+    <loc>/tags/blogdown/</loc>
+    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/data-science/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/datascience/</loc>
+    <lastmod>2016-07-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/http/</loc>
     <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/https/</loc>
+    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/hugo/</loc>
+    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/jobs/</loc>
+    <lastmod>2016-07-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/learning/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/machine-learning/</loc>
+    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/plumber/</loc>
+    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/predict/</loc>
+    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/programming/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2016-07-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/rest/</loc>
+    <lastmod>2017-10-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/rmd/</loc>
+    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2016-07-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tech/</loc>
+    <lastmod>2017-05-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

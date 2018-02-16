@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogdown on the raybuhr blog</title>
-    <link>https://raybuhr.github.io/tags/blogdown/</link>
+    <link>/tags/blogdown/</link>
     <description>Recent content in Blogdown on the raybuhr blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 04 May 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://raybuhr.github.io/tags/blogdown/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/blogdown/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using Hugo and Blogdown</title>
-      <link>https://raybuhr.github.io/2017/05/using-hugo-and-blogdown/</link>
+      <link>/2017/05/using-hugo-and-blogdown/</link>
       <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://raybuhr.github.io/2017/05/using-hugo-and-blogdown/</guid>
+      <guid>/2017/05/using-hugo-and-blogdown/</guid>
       <description>Redesign Hugo Blogdown Lessons Learned Using Github Pages to Host   Redesign My previous blog design, as last blog post, used Rmarkdown (.Rmd) to create and build out the site. Rmarkdown is a really powerful way to communicate using the tools that R provides, but it is really slow and painful to rebuild every post each time you make a change to the site. Also, while you can always add custom css styling to your site and your Rmarkdown files, I found that it was difficult to not spend countless hours doing so and still end up with something I really liked.</description>
     </item>
     
