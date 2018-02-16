@@ -18,7 +18,7 @@ I've been asked by a few different people now what language they should learn af
 I really love the R programming language. I haven't always felt that way; in fact I really disliked R when I first tried to learn it. For example:
 
 - Everything is a vector?!? 
-- You can load import code in multiple ways; `source`, `library`, `require`. 
+- You can load/import code in multiple ways; `source`, `library`, `require`. 
 - The base family of [`apply`](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family) functions behave similarly yet don't pass parameters consistently 
   - Side note: I recommend using the `purrr` library instead, but if you must go base try starting with `lapply`). 
 - The assignment operator `<-` can go on either side of your code! 
