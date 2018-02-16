@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on the raybuhr blog</title>
-    <link>/tags/r/</link>
+    <link>https://raybuhr.github.io/tags/r/</link>
     <description>Recent content in R on the raybuhr blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raybuhr.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Picking a Second Programming Language to Learn after R</title>
-      <link>/2018/02/picking-a-second-programming-language-to-learn-after-r/</link>
+      <link>https://raybuhr.github.io/2018/02/picking-a-second-programming-language-to-learn-after-r/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/02/picking-a-second-programming-language-to-learn-after-r/</guid>
+      <guid>https://raybuhr.github.io/2018/02/picking-a-second-programming-language-to-learn-after-r/</guid>
       <description>So what language should you learn after R? 1. Your goal is to be a very easy to employ data scientist: Python  2. Your goal is to become a highly paid data scientist: Scala  3. You want to understand how the R code you run actually works on the computer: C and a bit of C++  4. You want to do more web development OR you want lots of customization/flexibility in your interactive data visualizations: JavaScript  5.</description>
     </item>
     
     <item>
       <title>Making Predictions over HTTP with R</title>
-      <link>/2017/10/making-predictions-over-http/</link>
+      <link>https://raybuhr.github.io/2017/10/making-predictions-over-http/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/10/making-predictions-over-http/</guid>
+      <guid>https://raybuhr.github.io/2017/10/making-predictions-over-http/</guid>
       <description>Using R as a Production Machine Learning Language (Part I) Why is this necessary? Getting Started with Plumber on a trained model Prepping Data Train Model Evaluating Model Save model to RDS  Building Plumber API Plumber API files First use of Plumber Annotation - Health check endpoint Landing Page Prediction Endpoint Putting it all together  Concluding Remarks   Using R as a Production Machine Learning Language (Part I) There’s often confusion amoung the data science and machine learning crowd about the quality of R as a production level language for deploying predictive models.</description>
     </item>
     
     <item>
       <title>Using R Markdown to Create a Blog</title>
-      <link>/2016/08/using-r-markdown-to-create-a-blog/</link>
+      <link>https://raybuhr.github.io/2016/08/using-r-markdown-to-create-a-blog/</link>
       <pubDate>Sun, 07 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/08/using-r-markdown-to-create-a-blog/</guid>
+      <guid>https://raybuhr.github.io/2016/08/using-r-markdown-to-create-a-blog/</guid>
       <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 The R package rmarkdown can be used to create websites quickly and easily. If you are only interested in generating static content, which can include interactive charts using javascript, Github has free hosting through https://pages.</description>
     </item>

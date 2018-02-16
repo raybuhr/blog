@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Datascience on the raybuhr blog</title>
-    <link>/tags/datascience/</link>
+    <link>https://raybuhr.github.io/tags/datascience/</link>
     <description>Recent content in Datascience on the raybuhr blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 14 Jul 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/datascience/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raybuhr.github.io/tags/datascience/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Are Tech Jobs Really Down This Year?</title>
-      <link>/2016/07/are-tech-jobs-really-down-this-year/</link>
+      <link>https://raybuhr.github.io/2016/07/are-tech-jobs-really-down-this-year/</link>
       <pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/07/are-tech-jobs-really-down-this-year/</guid>
+      <guid>https://raybuhr.github.io/2016/07/are-tech-jobs-really-down-this-year/</guid>
       <description>A few weeks ago, one of my fellow MIDS colleagues shared this article, Tech job postings are down 40% and nobody’s talking about it. As a data skeptic, I wondered if it was true.
 
  

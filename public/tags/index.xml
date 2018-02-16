@@ -2,192 +2,192 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on the raybuhr blog</title>
-    <link>/tags/</link>
+    <link>https://raybuhr.github.io/tags/</link>
     <description>Recent content in Tags on the raybuhr blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 01 Jul 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raybuhr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>/tags/about/</link>
+      <link>https://raybuhr.github.io/tags/about/</link>
       <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/about/</guid>
+      <guid>https://raybuhr.github.io/tags/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Api</title>
-      <link>/tags/api/</link>
+      <link>https://raybuhr.github.io/tags/api/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/api/</guid>
+      <guid>https://raybuhr.github.io/tags/api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog</title>
-      <link>/tags/blog/</link>
+      <link>https://raybuhr.github.io/tags/blog/</link>
       <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/blog/</guid>
+      <guid>https://raybuhr.github.io/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blogdown</title>
-      <link>/tags/blogdown/</link>
+      <link>https://raybuhr.github.io/tags/blogdown/</link>
       <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/blogdown/</guid>
+      <guid>https://raybuhr.github.io/tags/blogdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Science</title>
-      <link>/tags/data-science/</link>
+      <link>https://raybuhr.github.io/tags/data-science/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/data-science/</guid>
+      <guid>https://raybuhr.github.io/tags/data-science/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Datascience</title>
-      <link>/tags/datascience/</link>
+      <link>https://raybuhr.github.io/tags/datascience/</link>
       <pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/datascience/</guid>
+      <guid>https://raybuhr.github.io/tags/datascience/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Http</title>
-      <link>/tags/http/</link>
+      <link>https://raybuhr.github.io/tags/http/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/http/</guid>
+      <guid>https://raybuhr.github.io/tags/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Https</title>
-      <link>/tags/https/</link>
+      <link>https://raybuhr.github.io/tags/https/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/https/</guid>
+      <guid>https://raybuhr.github.io/tags/https/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>/tags/hugo/</link>
+      <link>https://raybuhr.github.io/tags/hugo/</link>
       <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/hugo/</guid>
+      <guid>https://raybuhr.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jobs</title>
-      <link>/tags/jobs/</link>
+      <link>https://raybuhr.github.io/tags/jobs/</link>
       <pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/jobs/</guid>
+      <guid>https://raybuhr.github.io/tags/jobs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Learning</title>
-      <link>/tags/learning/</link>
+      <link>https://raybuhr.github.io/tags/learning/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/learning/</guid>
+      <guid>https://raybuhr.github.io/tags/learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>/tags/machine-learning/</link>
+      <link>https://raybuhr.github.io/tags/machine-learning/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/machine-learning/</guid>
+      <guid>https://raybuhr.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Plumber</title>
-      <link>/tags/plumber/</link>
+      <link>https://raybuhr.github.io/tags/plumber/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/plumber/</guid>
+      <guid>https://raybuhr.github.io/tags/plumber/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Predict</title>
-      <link>/tags/predict/</link>
+      <link>https://raybuhr.github.io/tags/predict/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/predict/</guid>
+      <guid>https://raybuhr.github.io/tags/predict/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming</title>
-      <link>/tags/programming/</link>
+      <link>https://raybuhr.github.io/tags/programming/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/programming/</guid>
+      <guid>https://raybuhr.github.io/tags/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>/tags/python/</link>
+      <link>https://raybuhr.github.io/tags/python/</link>
       <pubDate>Thu, 14 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/python/</guid>
+      <guid>https://raybuhr.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
+      <link>https://raybuhr.github.io/tags/r/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>https://raybuhr.github.io/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rest</title>
-      <link>/tags/rest/</link>
+      <link>https://raybuhr.github.io/tags/rest/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rest/</guid>
+      <guid>https://raybuhr.github.io/tags/rest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rmd</title>
-      <link>/tags/rmd/</link>
+      <link>https://raybuhr.github.io/tags/rmd/</link>
       <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rmd/</guid>
+      <guid>https://raybuhr.github.io/tags/rmd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tech</title>
-      <link>/tags/tech/</link>
+      <link>https://raybuhr.github.io/tags/tech/</link>
       <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tech/</guid>
+      <guid>https://raybuhr.github.io/tags/tech/</guid>
       <description></description>
     </item>
     
