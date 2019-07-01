@@ -1,13 +1,13 @@
-baseURL = "https://raybuhr.github.io/"
+title = "the ray buhr blog"
+baseURL = "/"
 languageCode = "en-us"
-title = "the raybuhr blog"
 theme = "gohugo-theme-ananke"
 publishDir = "docs"
 
 MetaDataFormat = "yaml"
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
-Paginate = 5 # this is set low for demonstrating with dummy content. Set to a higher number
+Paginate = 5
 googleAnalytics = ""
 enableRobotsTXT = true
 
@@ -18,9 +18,11 @@ enableRobotsTXT = true
 
 [params]
   favicon = ""
-  description = "the raybuhr blog"
+  description = "The Personal Blog of Ray Buhr"
   twitter = "https://twitter.com/raybuhr"
-  github = "https://github.com/raybuhr"
-  linkedin = "https://www.linkedin.com/in/raybuhr"
-  background_color_class = "bg-black"
+  github = "raybuhr"
+  linkedin = "raybuhr"
+  # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+  background_color_class = "bg-grey"
   featured_image = "/images/blog_bg.jpg"
+  recent_posts_number = 5
