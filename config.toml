@@ -1,6 +1,5 @@
 title = "the ray buhr blog"
-# baseURL = "https://raybuhr.github.io/blog/"
-baseURL = "/blog/"
+baseURL = "https://raybuhr.github.io/blog/"
 languageCode = "en-us"
 theme = "gohugo-theme-ananke"
 publishDir = "docs"

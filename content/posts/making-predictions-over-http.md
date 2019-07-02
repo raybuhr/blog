@@ -25,7 +25,7 @@ code that allows us access a website through the browser or
 programmatically in order to get predictions.
 
 ![what we’ll have at the end of this blog
-post](/images/plumber_firefox_screenshot.png)
+post](/blog/images/plumber_firefox_screenshot.png)
 
 *Note: The plumber github repo has a giant warning about breaking
 changes coming in version 0.4. This is a GOOD thing! When developing an
