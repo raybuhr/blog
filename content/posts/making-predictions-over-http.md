@@ -25,7 +25,7 @@ code that allows us access a website through the browser or
 programmatically in order to get predictions.
 
 ![what we’ll have at the end of this blog
-post](/blog/images/plumber_firefox_screenshot.png)
+post](/images/plumber_firefox_screenshot.png)
 
 *Note: The plumber github repo has a giant warning about breaking
 changes coming in version 0.4. This is a GOOD thing! When developing an
@@ -122,8 +122,10 @@ load with* `data(Titanic)`.
 Here we start by reading in the data in csv file format to a variable
 called `titanic_data`.
 
-    library(readr)
-    titanic_data <- read_csv("plumber_titanic/train.csv")
+```R
+library(readr)
+titanic_data <- read_csv("plumber_titanic/train.csv")
+```
 
 In order to ensure the model we build ends up in useful and consistent,
 we’ll need the data that gets passed into it to be clean and consistent.
