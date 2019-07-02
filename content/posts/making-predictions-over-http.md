@@ -25,7 +25,7 @@ code that allows us access a website through the browser or
 programmatically in order to get predictions.
 
 ![what we’ll have at the end of this blog
-post](/images/plumber_firefox_screenshot.png)
+post](/posts/images/plumber_firefox_screenshot.png)
 
 *Note: The plumber github repo has a giant warning about breaking
 changes coming in version 0.4. This is a GOOD thing! When developing an
@@ -324,7 +324,7 @@ Over time, I think you’ll find having a simple endpoint like this can be
 really helpful for debugging whether your model is having problems or if
 the API server is having problems.
 
-![health check page](/images/plumber_healthcheck_screenshot.png)
+![health check page](/posts/images/plumber_healthcheck_screenshot.png)
 
 ### Landing Page
 
@@ -375,7 +375,7 @@ unfamiliar we are displaying:
 Sourcing the `server.R` file now should allow you to check it out and
 see:
 
-![api landing page](/images/plumber_landing_page_screenshot.png)
+![api landing page](/posts/images/plumber_landing_page_screenshot.png)
 
 ### Prediction Endpoint
 
@@ -493,7 +493,7 @@ later. Specifically, we return JSON containing:
 -   a status code of `200` since everything worked `OK`
 -   the version of the model the prediction came from
 
-![predict success](/images/plumber_survival_prediction_screenshot.png)
+![predict success](/posts/images/plumber_survival_prediction_screenshot.png)
 
 Why do we need all that? Well, in addition to making predictions, as
 data scientists we want to collect data. We want to log how often the
@@ -513,12 +513,12 @@ return:
 -   a status code of `400` which indicates a `Bad Request`
 -   the version of the model that made the response
 
-![predict error](/images/plumber_survival_error_screenshot.png)
+![predict error](/posts/images/plumber_survival_error_screenshot.png)
 
 In addition to being able to use the API from a web browser, you can
 also use other tools, like curl through the command line.
 
-![curl api](/images/plumber_curl_screenshot.png)
+![curl api](/posts/images/plumber_curl_screenshot.png)
 
 ### Putting it all together
 
