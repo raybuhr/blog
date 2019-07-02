@@ -11,6 +11,8 @@ Paginate = 5
 googleAnalytics = ""
 enableRobotsTXT = true
 pygmentsUseClassic = true
+relativeURLS = true
+canonifyurls = true
 
 [sitemap]
   changefreq = "monthly"
