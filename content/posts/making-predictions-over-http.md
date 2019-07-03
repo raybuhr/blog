@@ -122,10 +122,11 @@ load with* `data(Titanic)`.
 Here we start by reading in the data in csv file format to a variable
 called `titanic_data`.
 
-```R
+{{< highlight r >}}
 library(readr)
 titanic_data <- read_csv("plumber_titanic/train.csv")
-```
+{{< / highlight >}}
+
 
 In order to ensure the model we build ends up in useful and consistent,
 we’ll need the data that gets passed into it to be clean and consistent.
@@ -135,17 +136,21 @@ create a simple function to coerce the raw data into the data we expect.
 We’ll then be able to apply this function to our training dataset, as
 well as any future incoming data we want to predict on.
 
-    transform_titantic_data <- function(input_titantic_data) {
-      ouput_titantic_data <- data.frame(
-        survived = factor(input_titantic_data$Survived, levels = c(0, 1)),
-        pclass = factor(input_titantic_data$Pclass, levels = c(1, 2, 3)),
-        female = tolower(input_titantic_data$Sex) == "female",
-        age = factor(dplyr::if_else(input_titantic_data$Age < 18, "child", "adult", "unknown"), 
-                     levels = c("child", "adult", "unknown"))
-      )
-    }
+{{< highlight r >}}
+transform_titantic_data <- function(input_titantic_data) {
+  ouput_titantic_data <- data.frame(
+    survived = factor(input_titantic_data$Survived, levels = c(0, 1)),
+    pclass = factor(input_titantic_data$Pclass, levels = c(1, 2, 3)),
+    female = tolower(input_titantic_data$Sex) == "female",
+    age = factor(dplyr::if_else(input_titantic_data$Age < 18,
+                 "child", "adult", "unknown"), 
+                 levels = c("child", "adult", "unknown"))
+  )
+}
 
-    clean_titanic <- transform_titantic_data(titanic_data)
+clean_titanic <- transform_titantic_data(titanic_data)
+{{< / highlight >}}
+
 
 ### Train Model
 
@@ -162,13 +167,16 @@ and the results are much easier to explain and understand. Specifically
 the logistic regression coefficients can help us determine the impact of
 each independent variable on the odds of the outcome (survival).
 
-    set.seed(42)
-    training_rows <- sample(1:nrow(clean_titanic), size = floor(0.7*nrow(clean_titanic)))
-    train_df <- clean_titanic[training_rows, ]
-    test_df <- clean_titanic[-training_rows, ]
+{{< highlight r >}}
+set.seed(42)
+training_rows <- sample(1:nrow(clean_titanic),
+                        size = floor(0.7*nrow(clean_titanic)))
+train_df <- clean_titanic[training_rows, ]
+test_df <- clean_titanic[-training_rows, ]
 
-    titanic_glm <- glm(survived ~ pclass + female + age, 
-                       data = clean_titanic, family = binomial(link = "logit"))
+titanic_glm <- glm(survived ~ pclass + female + age, 
+                   data = clean_titanic, family = binomial(link = "logit"))
+{{< / highlight >}}
 
 ### Evaluating Model
 
@@ -181,18 +189,30 @@ probability is over 50%. We then compare the predicted survival to the
 actual survival in our `test_df` split to get a *confusion matrix* and
 our predicted accuracy.
 
-    test_predictions <- predict(titanic_glm, newdata = test_df, type = "response") >= 0.5
-    test_actuals <- test_df$survived == 1
-    accuracy <- table(test_predictions, test_actuals)
-    print(accuracy)
-    print(paste0("Accuracy: ", round(100 * sum(diag(accuracy))/sum(accuracy), 2), "%"))
+{{< highlight r >}}
+test_predictions <- predict(
+    titanic_glm, 
+    newdata = test_df, 
+    type = "response"
+) >= 0.5
+test_actuals <- test_df$survived == 1
+accuracy <- table(test_predictions, test_actuals)
+print(accuracy)
+print(paste0(
+    "Accuracy: ", 
+    round(100 * sum(diag(accuracy))/sum(accuracy), 2), 
+    "%"
+))
+{{< / highlight >}}
 
-                    test_actuals
-    test_predictions FALSE TRUE
-               FALSE   147   29
-               TRUE     29   63
+```
+                test_actuals
+test_predictions FALSE TRUE
+           FALSE   147   29
+           TRUE     29   63
 
-    [1] "Accuracy: 78.36%"
+[1] "Accuracy: 78.36%"
+```
 
 As you can see, our model does a reasonable job, but could definitely be
 dialed in quite a bit. Let’s just call this version 0.0.1 for now, then
@@ -209,7 +229,9 @@ session environment like `.Rdata`, when you load a `.Rds` file later you
 can also save it to a variable, which means we can use the `predict`
 function with it just like normal (like we just did in previous code).
 
-    saveRDS(titanic_glm, file = "plumber_titanic/model.Rds", compress = TRUE)
+{{< highlight r >}}
+saveRDS(titanic_glm, file = "plumber_titanic/model.Rds", compress = TRUE)
+{{< / highlight >}}
 
 Building Plumber API
 --------------------
@@ -247,10 +269,12 @@ bones scenario (keep it simple) so I simply named it `server.R`. In that
 code, we do just 4 things; load in the `plumber` library, source our API
 definitions file, and serve it over port `8000`.
 
-    library(plumber)
+{{< highlight r >}}
+library(plumber)
 
-    serve_model <- plumb("plumber_titantic/titanic-api.R")
-    serve_model$run(port = 8000)
+serve_model <- plumb("plumber_titantic/titanic-api.R")
+serve_model$run(port = 8000)
+{{< / highlight >}}
 
 The other file has the most interesting bits. At the top of the code for
 `titanic-api.R`, we load the `plumber` library and then read in our
@@ -271,18 +295,19 @@ two fold:
     creating a very simple landing page for our API based on these
     variables.
 
-<!-- -->
+{{< highlight r >}}
+library(plumber)
+model <- readRDS("plumber_titanic/model.Rds")
 
-    library(plumber)
-    model <- readRDS("plumber_titanic/model.Rds")
-
-    MODEL_VERSION <- "0.0.1"
-    VARIABLES <- list(
-      pclass = "Pclass = 1, 2, 3 (Ticket Class: 1st, 2nd, 3rd)",
-      sex = "Sex = male or female",
-      age = "Age = # in years",
-      gap = "",
-      survival = "Successful submission will results in a calculated Survival Probability from 0 to 1 (Unlikely to More Likely)")
+MODEL_VERSION <- "0.0.1"
+VARIABLES <- list(
+  pclass = "Pclass = 1, 2, 3 (Ticket Class: 1st, 2nd, 3rd)",
+  sex = "Sex = male or female",
+  age = "Age = # in years",
+  gap = "",
+  survival = "Successful submission will results in a calculated Survival Probability from 0 to 1 (Unlikely to More Likely)"
+)
+{{< / highlight >}}
 
 ### First use of Plumber Annotation - Health check endpoint
 
@@ -303,16 +328,18 @@ In this function, the decorator we applied is `@get /healthcheck` which
 tells plumber to expose this function to HTTP GET requests at the url
 <a href="http://127.0.0.1:8000/healthcheck" class="uri">http://127.0.0.1:8000/healthcheck</a>.
 
-    #* @get /healthcheck
-    health_check <- function() {
-      result <- data.frame(
-        "input" = "",
-        "status" = 200,
-        "model_version" = MODEL_VERSION
-      )
-      
-      return(result)
-    }
+{{< highlight r >}}
+#* @get /healthcheck
+health_check <- function() {
+  result <- data.frame(
+    "input" = "",
+    "status" = 200,
+    "model_version" = MODEL_VERSION
+  )
+  
+  return(result)
+}
+{{< / highlight >}}
 
 For the function above, think of it as a way to test whether the API is
 actually working. In fact, if you stop right here and save your two
@@ -336,32 +363,35 @@ decorator, we also introduce a second decorator, `@html` that tells
 plumber to render responses to this endpoint as `html` content instead
 of `json`.
 
-    #* @get /
-    #* @html
-    home <- function() {
-      title <- "Titanic Survival API"
-      body_intro <-  "Welcome to the Titanic Survival API!"
-      body_model <- paste("We are currently serving model version:", MODEL_VERSION)
-      body_msg <- paste("To received a prediction on survival probability,", 
-                         "submit the following variables to the <b>/survival</b> endpoint:",
-                         sep = "\n")
-      body_reqs <- paste(VARIABLES, collapse = "<br>")
-      
-      result <- paste(
-        "<html>",
-        "<h1>", title, "</h1>", "<br>",
-        "<body>", 
-        "<p>", body_intro, "</p>",
-        "<p>", body_model, "</p>",
-        "<p>", body_msg, "</p>",
-        "<p>", body_reqs, "</p>",
-        "</body>",
-        "</html>",
-        collapse = "\n"
-      )
-      
-      return(result)
-    }
+{{< highlight r >}}
+#* @get /
+#* @html
+home <- function() {
+  title <- "Titanic Survival API"
+  body_intro <-  "Welcome to the Titanic Survival API!"
+  body_model <- paste("We are currently serving model version:", MODEL_VERSION)
+  body_msg <- paste(
+    "To received a prediction on survival probability,", 
+    "submit the following variables to the <b>/survival</b> endpoint:",
+    sep = "\n")
+  body_reqs <- paste(VARIABLES, collapse = "<br>")
+  
+  result <- paste(
+    "<html>",
+    "<h1>", title, "</h1>", "<br>",
+    "<body>", 
+    "<p>", body_intro, "</p>",
+    "<p>", body_model, "</p>",
+    "<p>", body_msg, "</p>",
+    "<p>", body_reqs, "</p>",
+    "</body>",
+    "</html>",
+    collapse = "\n"
+  )
+  
+  return(result)
+}
+{{< / highlight >}}
 
 The html we generate with this function is pretty basic, but if you are
 unfamiliar we are displaying:
@@ -384,30 +414,33 @@ start by implementing the helper function we used to clead the data
 before training the model, as well as a helper function to validate that
 inputs passed to our API are useful and appropriate.
 
-    transform_titantic_data <- function(input_titantic_data) {
-      ouput_titantic_data <- data.frame(
-        pclass = factor(input_titantic_data$Pclass, levels = c(1, 2, 3)),
-        female = tolower(input_titantic_data$Sex) == "female",
-        age = factor(dplyr::if_else(input_titantic_data$Age < 18, "child", "adult", "unknown"), 
-                     levels = c("child", "adult", "unknown"))
-      )
-    }
+{{< highlight r >}}
+transform_titantic_data <- function(input_titantic_data) {
+  ouput_titantic_data <- data.frame(
+    pclass = factor(input_titantic_data$Pclass, levels = c(1, 2, 3)),
+    female = tolower(input_titantic_data$Sex) == "female",
+    age = factor(dplyr::if_else(input_titantic_data$Age < 18,
+                 "child", "adult", "unknown"), 
+                 levels = c("child", "adult", "unknown"))
+  )
+}
 
-    validate_feature_inputs <- function(age, pclass, sex) {
-      age_valid <- (age >= 0 & age < 200 | is.na(age))
-      pclass_valid <- (pclass %in% c(1, 2, 3))
-      sex_valid <- (sex %in% c("male", "female"))
-      tests <- c("Age must be between 0 and 200 or NA", 
-                 "Pclass must be 1, 2, or 3", 
-                 "Sex must be either male or female")
-      test_results <- c(age_valid, pclass_valid, sex_valid)
-      if(!all(test_results)) {
-        failed <- which(!test_results)
-        return(tests[failed])
-      } else {
-        return("OK")
-      }
-    }
+validate_feature_inputs <- function(age, pclass, sex) {
+  age_valid <- (age >= 0 & age < 200 | is.na(age))
+  pclass_valid <- (pclass %in% c(1, 2, 3))
+  sex_valid <- (sex %in% c("male", "female"))
+  tests <- c("Age must be between 0 and 200 or NA", 
+             "Pclass must be 1, 2, or 3", 
+             "Sex must be either male or female")
+  test_results <- c(age_valid, pclass_valid, sex_valid)
+  if(!all(test_results)) {
+    failed <- which(!test_results)
+    return(tests[failed])
+  } else {
+    return("OK")
+  }
+}
+{{< / highlight >}}
 
 You may notice that the `transform_titantic_data` function is almost
 identical, but not quite. Since we are now just making predictions, we
@@ -442,34 +475,36 @@ caching the server might provide. So even though we want to accept a GET
 request with a payload or pass in the payload as URL query string, we’re
 going to do both to make everyone unhappy.
 
-    #* @post /survival
-    #* @get /survival
-    predict_survival <- function(Age=NA, Pclass=NULL, Sex=NULL) {
-      age = as.integer(Age)
-      pclass = as.integer(Pclass)
-      sex = tolower(Sex)
-      valid_input <- validate_feature_inputs(age, pclass, sex)
-      if (valid_input[1] == "OK") {
-        payload <- data.frame(Age=age, Pclass=pclass, Sex=sex)
-        clean_data <- transform_titantic_data(payload)
-        prediction <- predict(model, clean_data, type = "response")
-        result <- list(
-          input = list(payload),
-          reposnse = list("survival_probability" = prediction,
-                          "survival_prediction" = (prediction >= 0.5)
-                          ),
-          status = 200,
-          model_version = MODEL_VERSION)
-      } else {
-        result <- list(
-          input = list(Age = Age, Pclass = Pclass, Sex = Sex),
-          response = list(input_error = valid_input),
-          status = 400,
-          model_version = MODEL_VERSION)
-      }
+{{< highlight r >}}
+#* @post /survival
+#* @get /survival
+predict_survival <- function(Age=NA, Pclass=NULL, Sex=NULL) {
+  age = as.integer(Age)
+  pclass = as.integer(Pclass)
+  sex = tolower(Sex)
+  valid_input <- validate_feature_inputs(age, pclass, sex)
+  if (valid_input[1] == "OK") {
+    payload <- data.frame(Age=age, Pclass=pclass, Sex=sex)
+    clean_data <- transform_titantic_data(payload)
+    prediction <- predict(model, clean_data, type = "response")
+    result <- list(
+      input = list(payload),
+      reposnse = list("survival_probability" = prediction,
+                      "survival_prediction" = (prediction >= 0.5)
+                      ),
+      status = 200,
+      model_version = MODEL_VERSION)
+  } else {
+    result <- list(
+      input = list(Age = Age, Pclass = Pclass, Sex = Sex),
+      response = list(input_error = valid_input),
+      status = 400,
+      model_version = MODEL_VERSION)
+  }
 
-      return(result)
-    }
+  return(result)
+}
+{{< / highlight >}}
 
 Compared to the rest of the code above, this function is definitely
 doing a lot more. First off, we specifically cast our input variables to

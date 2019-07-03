@@ -41,7 +41,7 @@
 
 <meta itemprop="datePublished" content="2017-10-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-10-17T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="3871">
+<meta itemprop="wordCount" content="3877">
 
 
 
@@ -59,7 +59,7 @@
   
 
   <header>
-    <div class="bg-grey">
+    <div class="bg-dark-gray">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
     <a href="//raybuhr.github.io/blog/" class="f3 fw2 hover-white no-underline white-90 dib">
@@ -272,9 +272,10 @@ load with</em> <code>data(Titanic)</code>.</p>
 <p>Here we start by reading in the data in csv file format to a variable
 called <code>titanic_data</code>.</p>
 
-<pre><code class="language-R">library(readr)
-titanic_data &lt;- read_csv(&quot;plumber_titanic/train.csv&quot;)
-</code></pre>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #a6e22e">library</span><span style="color: #f8f8f2">(readr)</span>
+<span style="color: #f8f8f2">titanic_data</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">read_csv</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;plumber_titanic/train.csv&quot;</span><span style="color: #f8f8f2">)</span>
+</code></pre></div>
+
 
 <p>In order to ensure the model we build ends up in useful and consistent,
 we’ll need the data that gets passed into it to be clean and consistent.
@@ -284,18 +285,20 @@ create a simple function to coerce the raw data into the data we expect.
 We’ll then be able to apply this function to our training dataset, as
 well as any future incoming data we want to predict on.</p>
 
-<pre><code>transform_titantic_data &lt;- function(input_titantic_data) {
-  ouput_titantic_data &lt;- data.frame(
-    survived = factor(input_titantic_data$Survived, levels = c(0, 1)),
-    pclass = factor(input_titantic_data$Pclass, levels = c(1, 2, 3)),
-    female = tolower(input_titantic_data$Sex) == &quot;female&quot;,
-    age = factor(dplyr::if_else(input_titantic_data$Age &lt; 18, &quot;child&quot;, &quot;adult&quot;, &quot;unknown&quot;), 
-                 levels = c(&quot;child&quot;, &quot;adult&quot;, &quot;unknown&quot;))
-  )
-}
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #f8f8f2">transform_titantic_data</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">function</span><span style="color: #f8f8f2">(input_titantic_data)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">ouput_titantic_data</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">data.frame</span><span style="color: #f8f8f2">(</span>
+    <span style="color: #f8f8f2">survived</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">factor</span><span style="color: #f8f8f2">(input_titantic_data</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">Survived,</span> <span style="color: #f8f8f2">levels</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)),</span>
+    <span style="color: #f8f8f2">pclass</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">factor</span><span style="color: #f8f8f2">(input_titantic_data</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">Pclass,</span> <span style="color: #f8f8f2">levels</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)),</span>
+    <span style="color: #f8f8f2">female</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">tolower</span><span style="color: #f8f8f2">(input_titantic_data</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">Sex)</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;female&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">factor</span><span style="color: #f8f8f2">(dplyr</span><span style="color: #f92672">::</span><span style="color: #a6e22e">if_else</span><span style="color: #f8f8f2">(input_titantic_data</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">Age</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">18</span><span style="color: #f8f8f2">,</span>
+                 <span style="color: #e6db74">&quot;child&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;adult&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unknown&quot;</span><span style="color: #f8f8f2">),</span> 
+                 <span style="color: #f8f8f2">levels</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;child&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;adult&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unknown&quot;</span><span style="color: #f8f8f2">))</span>
+  <span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">}</span>
 
-clean_titanic &lt;- transform_titantic_data(titanic_data)
-</code></pre>
+<span style="color: #f8f8f2">clean_titanic</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">transform_titantic_data</span><span style="color: #f8f8f2">(titanic_data)</span>
+</code></pre></div>
+
 
 <h3 id="train-model">Train Model</h3>
 
@@ -312,14 +315,16 @@ and the results are much easier to explain and understand. Specifically
 the logistic regression coefficients can help us determine the impact of
 each independent variable on the odds of the outcome (survival).</p>
 
-<pre><code>set.seed(42)
-training_rows &lt;- sample(1:nrow(clean_titanic), size = floor(0.7*nrow(clean_titanic)))
-train_df &lt;- clean_titanic[training_rows, ]
-test_df &lt;- clean_titanic[-training_rows, ]
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #a6e22e">set.seed</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">42</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">training_rows</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">sample</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f92672">:</span><span style="color: #a6e22e">nrow</span><span style="color: #f8f8f2">(clean_titanic),</span>
+                        <span style="color: #f8f8f2">size</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">floor</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.7</span><span style="color: #f92672">*</span><span style="color: #a6e22e">nrow</span><span style="color: #f8f8f2">(clean_titanic)))</span>
+<span style="color: #f8f8f2">train_df</span> <span style="color: #f92672">&lt;-</span> <span style="color: #f8f8f2">clean_titanic[training_rows,</span> <span style="color: #f8f8f2">]</span>
+<span style="color: #f8f8f2">test_df</span> <span style="color: #f92672">&lt;-</span> <span style="color: #f8f8f2">clean_titanic[</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">training_rows,</span> <span style="color: #f8f8f2">]</span>
 
-titanic_glm &lt;- glm(survived ~ pclass + female + age, 
-                   data = clean_titanic, family = binomial(link = &quot;logit&quot;))
-</code></pre>
+<span style="color: #f8f8f2">titanic_glm</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">glm</span><span style="color: #f8f8f2">(survived</span> <span style="color: #f92672">~</span> <span style="color: #f8f8f2">pclass</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">female</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">age,</span> 
+                   <span style="color: #f8f8f2">data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">clean_titanic,</span> <span style="color: #f8f8f2">family</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">binomial</span><span style="color: #f8f8f2">(link</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;logit&quot;</span><span style="color: #f8f8f2">))</span>
+</code></pre></div>
+
 
 <h3 id="evaluating-model">Evaluating Model</h3>
 
@@ -332,13 +337,23 @@ probability is over 50%. We then compare the predicted survival to the
 actual survival in our <code>test_df</code> split to get a <em>confusion matrix</em> and
 our predicted accuracy.</p>
 
-<pre><code>test_predictions &lt;- predict(titanic_glm, newdata = test_df, type = &quot;response&quot;) &gt;= 0.5
-test_actuals &lt;- test_df$survived == 1
-accuracy &lt;- table(test_predictions, test_actuals)
-print(accuracy)
-print(paste0(&quot;Accuracy: &quot;, round(100 * sum(diag(accuracy))/sum(accuracy), 2), &quot;%&quot;))
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #f8f8f2">test_predictions</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">predict</span><span style="color: #f8f8f2">(</span>
+    <span style="color: #f8f8f2">titanic_glm,</span> 
+    <span style="color: #f8f8f2">newdata</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">test_df,</span> 
+    <span style="color: #f8f8f2">type</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;response&quot;</span>
+<span style="color: #f8f8f2">)</span> <span style="color: #f92672">&gt;=</span> <span style="color: #ae81ff">0.5</span>
+<span style="color: #f8f8f2">test_actuals</span> <span style="color: #f92672">&lt;-</span> <span style="color: #f8f8f2">test_df</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">survived</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">1</span>
+<span style="color: #f8f8f2">accuracy</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">table</span><span style="color: #f8f8f2">(test_predictions,</span> <span style="color: #f8f8f2">test_actuals)</span>
+<span style="color: #a6e22e">print</span><span style="color: #f8f8f2">(accuracy)</span>
+<span style="color: #a6e22e">print</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">paste0</span><span style="color: #f8f8f2">(</span>
+    <span style="color: #e6db74">&quot;Accuracy: &quot;</span><span style="color: #f8f8f2">,</span> 
+    <span style="color: #a6e22e">round</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">100</span> <span style="color: #f92672">*</span> <span style="color: #a6e22e">sum</span><span style="color: #f8f8f2">(</span><span style="color: #a6e22e">diag</span><span style="color: #f8f8f2">(accuracy))</span><span style="color: #f92672">/</span><span style="color: #a6e22e">sum</span><span style="color: #f8f8f2">(accuracy),</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">),</span> 
+    <span style="color: #e6db74">&quot;%&quot;</span>
+<span style="color: #f8f8f2">))</span>
+</code></pre></div>
 
-                test_actuals
+
+<pre><code>                test_actuals
 test_predictions FALSE TRUE
            FALSE   147   29
            TRUE     29   63
@@ -361,8 +376,9 @@ session environment like <code>.Rdata</code>, when you load a <code>.Rds</code> 
 can also save it to a variable, which means we can use the <code>predict</code>
 function with it just like normal (like we just did in previous code).</p>
 
-<pre><code>saveRDS(titanic_glm, file = &quot;plumber_titanic/model.Rds&quot;, compress = TRUE)
-</code></pre>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #a6e22e">saveRDS</span><span style="color: #f8f8f2">(titanic_glm,</span> <span style="color: #f8f8f2">file</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;plumber_titanic/model.Rds&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">compress</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">TRUE</span><span style="color: #f8f8f2">)</span>
+</code></pre></div>
+
 
 <h2 id="building-plumber-api">Building Plumber API</h2>
 
@@ -401,11 +417,12 @@ bones scenario (keep it simple) so I simply named it <code>server.R</code>. In t
 code, we do just 4 things; load in the <code>plumber</code> library, source our API
 definitions file, and serve it over port <code>8000</code>.</p>
 
-<pre><code>library(plumber)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #a6e22e">library</span><span style="color: #f8f8f2">(plumber)</span>
 
-serve_model &lt;- plumb(&quot;plumber_titantic/titanic-api.R&quot;)
-serve_model$run(port = 8000)
-</code></pre>
+<span style="color: #f8f8f2">serve_model</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">plumb</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;plumber_titantic/titanic-api.R&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">serve_model</span><span style="color: #f92672">$</span><span style="color: #a6e22e">run</span><span style="color: #f8f8f2">(port</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">8000</span><span style="color: #f8f8f2">)</span>
+</code></pre></div>
+
 
 <p>The other file has the most interesting bits. At the top of the code for
 <code>titanic-api.R</code>, we load the <code>plumber</code> library and then read in our
@@ -428,19 +445,19 @@ creating a very simple landing page for our API based on these
 variables.</li>
 </ol>
 
-<!-- -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #a6e22e">library</span><span style="color: #f8f8f2">(plumber)</span>
+<span style="color: #f8f8f2">model</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">readRDS</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;plumber_titanic/model.Rds&quot;</span><span style="color: #f8f8f2">)</span>
 
-<pre><code>library(plumber)
-model &lt;- readRDS(&quot;plumber_titanic/model.Rds&quot;)
+<span style="color: #f8f8f2">MODEL_VERSION</span> <span style="color: #f92672">&lt;-</span> <span style="color: #e6db74">&quot;0.0.1&quot;</span>
+<span style="color: #f8f8f2">VARIABLES</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">list</span><span style="color: #f8f8f2">(</span>
+  <span style="color: #f8f8f2">pclass</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Pclass = 1, 2, 3 (Ticket Class: 1st, 2nd, 3rd)&quot;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #f8f8f2">sex</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Sex = male or female&quot;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Age = # in years&quot;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #f8f8f2">gap</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">,</span>
+  <span style="color: #f8f8f2">survival</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;Successful submission will results in a calculated Survival Probability from 0 to 1 (Unlikely to More Likely)&quot;</span>
+<span style="color: #f8f8f2">)</span>
+</code></pre></div>
 
-MODEL_VERSION &lt;- &quot;0.0.1&quot;
-VARIABLES &lt;- list(
-  pclass = &quot;Pclass = 1, 2, 3 (Ticket Class: 1st, 2nd, 3rd)&quot;,
-  sex = &quot;Sex = male or female&quot;,
-  age = &quot;Age = # in years&quot;,
-  gap = &quot;&quot;,
-  survival = &quot;Successful submission will results in a calculated Survival Probability from 0 to 1 (Unlikely to More Likely)&quot;)
-</code></pre>
 
 <h3 id="first-use-of-plumber-annotation-health-check-endpoint">First use of Plumber Annotation - Health check endpoint</h3>
 
@@ -461,17 +478,18 @@ comment).</p>
 tells plumber to expose this function to HTTP GET requests at the url
 <a href="http://127.0.0.1:8000/healthcheck" class="uri"><a href="http://127.0.0.1:8000/healthcheck">http://127.0.0.1:8000/healthcheck</a></a>.</p>
 
-<pre><code>#* @get /healthcheck
-health_check &lt;- function() {
-  result &lt;- data.frame(
-    &quot;input&quot; = &quot;&quot;,
-    &quot;status&quot; = 200,
-    &quot;model_version&quot; = MODEL_VERSION
-  )
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #75715e">#* @get /healthcheck</span>
+<span style="color: #f8f8f2">health_check</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">function</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">result</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">data.frame</span><span style="color: #f8f8f2">(</span>
+    <span style="color: #e6db74">&quot;input&quot;</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;status&quot;</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">200</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;model_version&quot;</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MODEL_VERSION</span>
+  <span style="color: #f8f8f2">)</span>
+  
+  <span style="color: #a6e22e">return</span><span style="color: #f8f8f2">(result)</span>
+<span style="color: #f8f8f2">}</span>
+</code></pre></div>
 
-  return(result)
-}
-</code></pre>
 
 <p>For the function above, think of it as a way to test whether the API is
 actually working. In fact, if you stop right here and save your two
@@ -495,33 +513,35 @@ decorator, we also introduce a second decorator, <code>@html</code> that tells
 plumber to render responses to this endpoint as <code>html</code> content instead
 of <code>json</code>.</p>
 
-<pre><code>#* @get /
-#* @html
-home &lt;- function() {
-  title &lt;- &quot;Titanic Survival API&quot;
-  body_intro &lt;-  &quot;Welcome to the Titanic Survival API!&quot;
-  body_model &lt;- paste(&quot;We are currently serving model version:&quot;, MODEL_VERSION)
-  body_msg &lt;- paste(&quot;To received a prediction on survival probability,&quot;, 
-                     &quot;submit the following variables to the &lt;b&gt;/survival&lt;/b&gt; endpoint:&quot;,
-                     sep = &quot;\n&quot;)
-  body_reqs &lt;- paste(VARIABLES, collapse = &quot;&lt;br&gt;&quot;)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #75715e">#* @get /</span>
+<span style="color: #75715e">#* @html</span>
+<span style="color: #f8f8f2">home</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">function</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">title</span> <span style="color: #f92672">&lt;-</span> <span style="color: #e6db74">&quot;Titanic Survival API&quot;</span>
+  <span style="color: #f8f8f2">body_intro</span> <span style="color: #f92672">&lt;-</span>  <span style="color: #e6db74">&quot;Welcome to the Titanic Survival API!&quot;</span>
+  <span style="color: #f8f8f2">body_model</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">paste</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;We are currently serving model version:&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">MODEL_VERSION)</span>
+  <span style="color: #f8f8f2">body_msg</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">paste</span><span style="color: #f8f8f2">(</span>
+    <span style="color: #e6db74">&quot;To received a prediction on survival probability,&quot;</span><span style="color: #f8f8f2">,</span> 
+    <span style="color: #e6db74">&quot;submit the following variables to the &lt;b&gt;/survival&lt;/b&gt; endpoint:&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #f8f8f2">sep</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;\n&quot;</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">body_reqs</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">paste</span><span style="color: #f8f8f2">(VARIABLES,</span> <span style="color: #f8f8f2">collapse</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&lt;br&gt;&quot;</span><span style="color: #f8f8f2">)</span>
+  
+  <span style="color: #f8f8f2">result</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">paste</span><span style="color: #f8f8f2">(</span>
+    <span style="color: #e6db74">&quot;&lt;html&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;&lt;h1&gt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">title,</span> <span style="color: #e6db74">&quot;&lt;/h1&gt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&lt;br&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;&lt;body&gt;&quot;</span><span style="color: #f8f8f2">,</span> 
+    <span style="color: #e6db74">&quot;&lt;p&gt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">body_intro,</span> <span style="color: #e6db74">&quot;&lt;/p&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;&lt;p&gt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">body_model,</span> <span style="color: #e6db74">&quot;&lt;/p&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;&lt;p&gt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">body_msg,</span> <span style="color: #e6db74">&quot;&lt;/p&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;&lt;p&gt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">body_reqs,</span> <span style="color: #e6db74">&quot;&lt;/p&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;&lt;/body&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #e6db74">&quot;&lt;/html&gt;&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #f8f8f2">collapse</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;\n&quot;</span>
+  <span style="color: #f8f8f2">)</span>
+  
+  <span style="color: #a6e22e">return</span><span style="color: #f8f8f2">(result)</span>
+<span style="color: #f8f8f2">}</span>
+</code></pre></div>
 
-  result &lt;- paste(
-    &quot;&lt;html&gt;&quot;,
-    &quot;&lt;h1&gt;&quot;, title, &quot;&lt;/h1&gt;&quot;, &quot;&lt;br&gt;&quot;,
-    &quot;&lt;body&gt;&quot;, 
-    &quot;&lt;p&gt;&quot;, body_intro, &quot;&lt;/p&gt;&quot;,
-    &quot;&lt;p&gt;&quot;, body_model, &quot;&lt;/p&gt;&quot;,
-    &quot;&lt;p&gt;&quot;, body_msg, &quot;&lt;/p&gt;&quot;,
-    &quot;&lt;p&gt;&quot;, body_reqs, &quot;&lt;/p&gt;&quot;,
-    &quot;&lt;/body&gt;&quot;,
-    &quot;&lt;/html&gt;&quot;,
-    collapse = &quot;\n&quot;
-  )
-
-  return(result)
-}
-</code></pre>
 
 <p>The html we generate with this function is pretty basic, but if you are
 unfamiliar we are displaying:</p>
@@ -546,31 +566,33 @@ start by implementing the helper function we used to clead the data
 before training the model, as well as a helper function to validate that
 inputs passed to our API are useful and appropriate.</p>
 
-<pre><code>transform_titantic_data &lt;- function(input_titantic_data) {
-  ouput_titantic_data &lt;- data.frame(
-    pclass = factor(input_titantic_data$Pclass, levels = c(1, 2, 3)),
-    female = tolower(input_titantic_data$Sex) == &quot;female&quot;,
-    age = factor(dplyr::if_else(input_titantic_data$Age &lt; 18, &quot;child&quot;, &quot;adult&quot;, &quot;unknown&quot;), 
-                 levels = c(&quot;child&quot;, &quot;adult&quot;, &quot;unknown&quot;))
-  )
-}
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #f8f8f2">transform_titantic_data</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">function</span><span style="color: #f8f8f2">(input_titantic_data)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">ouput_titantic_data</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">data.frame</span><span style="color: #f8f8f2">(</span>
+    <span style="color: #f8f8f2">pclass</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">factor</span><span style="color: #f8f8f2">(input_titantic_data</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">Pclass,</span> <span style="color: #f8f8f2">levels</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)),</span>
+    <span style="color: #f8f8f2">female</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">tolower</span><span style="color: #f8f8f2">(input_titantic_data</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">Sex)</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;female&quot;</span><span style="color: #f8f8f2">,</span>
+    <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">factor</span><span style="color: #f8f8f2">(dplyr</span><span style="color: #f92672">::</span><span style="color: #a6e22e">if_else</span><span style="color: #f8f8f2">(input_titantic_data</span><span style="color: #f92672">$</span><span style="color: #f8f8f2">Age</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">18</span><span style="color: #f8f8f2">,</span>
+                 <span style="color: #e6db74">&quot;child&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;adult&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unknown&quot;</span><span style="color: #f8f8f2">),</span> 
+                 <span style="color: #f8f8f2">levels</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;child&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;adult&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unknown&quot;</span><span style="color: #f8f8f2">))</span>
+  <span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">}</span>
 
-validate_feature_inputs &lt;- function(age, pclass, sex) {
-  age_valid &lt;- (age &gt;= 0 &amp; age &lt; 200 | is.na(age))
-  pclass_valid &lt;- (pclass %in% c(1, 2, 3))
-  sex_valid &lt;- (sex %in% c(&quot;male&quot;, &quot;female&quot;))
-  tests &lt;- c(&quot;Age must be between 0 and 200 or NA&quot;, 
-             &quot;Pclass must be 1, 2, or 3&quot;, 
-             &quot;Sex must be either male or female&quot;)
-  test_results &lt;- c(age_valid, pclass_valid, sex_valid)
-  if(!all(test_results)) {
-    failed &lt;- which(!test_results)
-    return(tests[failed])
-  } else {
-    return(&quot;OK&quot;)
-  }
-}
-</code></pre>
+<span style="color: #f8f8f2">validate_feature_inputs</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">function</span><span style="color: #f8f8f2">(age,</span> <span style="color: #f8f8f2">pclass,</span> <span style="color: #f8f8f2">sex)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">age_valid</span> <span style="color: #f92672">&lt;-</span> <span style="color: #f8f8f2">(age</span> <span style="color: #f92672">&gt;=</span> <span style="color: #ae81ff">0</span> <span style="color: #f92672">&amp;</span> <span style="color: #f8f8f2">age</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">200</span> <span style="color: #f92672">|</span> <span style="color: #a6e22e">is.na</span><span style="color: #f8f8f2">(age))</span>
+  <span style="color: #f8f8f2">pclass_valid</span> <span style="color: #f92672">&lt;-</span> <span style="color: #f8f8f2">(pclass</span> <span style="color: #f92672">%in%</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">))</span>
+  <span style="color: #f8f8f2">sex_valid</span> <span style="color: #f92672">&lt;-</span> <span style="color: #f8f8f2">(sex</span> <span style="color: #f92672">%in%</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;male&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;female&quot;</span><span style="color: #f8f8f2">))</span>
+  <span style="color: #f8f8f2">tests</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Age must be between 0 and 200 or NA&quot;</span><span style="color: #f8f8f2">,</span> 
+             <span style="color: #e6db74">&quot;Pclass must be 1, 2, or 3&quot;</span><span style="color: #f8f8f2">,</span> 
+             <span style="color: #e6db74">&quot;Sex must be either male or female&quot;</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">test_results</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">c</span><span style="color: #f8f8f2">(age_valid,</span> <span style="color: #f8f8f2">pclass_valid,</span> <span style="color: #f8f8f2">sex_valid)</span>
+  <span style="color: #a6e22e">if</span><span style="color: #f8f8f2">(</span><span style="color: #f92672">!</span><span style="color: #a6e22e">all</span><span style="color: #f8f8f2">(test_results))</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">failed</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">which</span><span style="color: #f8f8f2">(</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">test_results)</span>
+    <span style="color: #a6e22e">return</span><span style="color: #f8f8f2">(tests[failed])</span>
+  <span style="color: #f8f8f2">}</span> <span style="color: #f8f8f2">else</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #a6e22e">return</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;OK&quot;</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">}</span>
+</code></pre></div>
+
 
 <p>You may notice that the <code>transform_titantic_data</code> function is almost
 identical, but not quite. Since we are now just making predictions, we
@@ -606,35 +628,36 @@ caching the server might provide. So even though we want to accept a GET
 request with a payload or pass in the payload as URL query string, we’re
 going to do both to make everyone unhappy.</p>
 
-<pre><code>#* @post /survival
-#* @get /survival
-predict_survival &lt;- function(Age=NA, Pclass=NULL, Sex=NULL) {
-  age = as.integer(Age)
-  pclass = as.integer(Pclass)
-  sex = tolower(Sex)
-  valid_input &lt;- validate_feature_inputs(age, pclass, sex)
-  if (valid_input[1] == &quot;OK&quot;) {
-    payload &lt;- data.frame(Age=age, Pclass=pclass, Sex=sex)
-    clean_data &lt;- transform_titantic_data(payload)
-    prediction &lt;- predict(model, clean_data, type = &quot;response&quot;)
-    result &lt;- list(
-      input = list(payload),
-      reposnse = list(&quot;survival_probability&quot; = prediction,
-                      &quot;survival_prediction&quot; = (prediction &gt;= 0.5)
-                      ),
-      status = 200,
-      model_version = MODEL_VERSION)
-  } else {
-    result &lt;- list(
-      input = list(Age = Age, Pclass = Pclass, Sex = Sex),
-      response = list(input_error = valid_input),
-      status = 400,
-      model_version = MODEL_VERSION)
-  }
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-r" data-lang="r"><span></span><span style="color: #75715e">#* @post /survival</span>
+<span style="color: #75715e">#* @get /survival</span>
+<span style="color: #f8f8f2">predict_survival</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">function</span><span style="color: #f8f8f2">(Age</span><span style="color: #f92672">=</span><span style="color: #66d9ef">NA</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">Pclass</span><span style="color: #f92672">=</span><span style="color: #66d9ef">NULL</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">Sex</span><span style="color: #f92672">=</span><span style="color: #66d9ef">NULL</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">as.integer</span><span style="color: #f8f8f2">(Age)</span>
+  <span style="color: #f8f8f2">pclass</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">as.integer</span><span style="color: #f8f8f2">(Pclass)</span>
+  <span style="color: #f8f8f2">sex</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">tolower</span><span style="color: #f8f8f2">(Sex)</span>
+  <span style="color: #f8f8f2">valid_input</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">validate_feature_inputs</span><span style="color: #f8f8f2">(age,</span> <span style="color: #f8f8f2">pclass,</span> <span style="color: #f8f8f2">sex)</span>
+  <span style="color: #a6e22e">if </span><span style="color: #f8f8f2">(valid_input[1]</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;OK&quot;</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">payload</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">data.frame</span><span style="color: #f8f8f2">(Age</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">age,</span> <span style="color: #f8f8f2">Pclass</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">pclass,</span> <span style="color: #f8f8f2">Sex</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">sex)</span>
+    <span style="color: #f8f8f2">clean_data</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">transform_titantic_data</span><span style="color: #f8f8f2">(payload)</span>
+    <span style="color: #f8f8f2">prediction</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">predict</span><span style="color: #f8f8f2">(model,</span> <span style="color: #f8f8f2">clean_data,</span> <span style="color: #f8f8f2">type</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;response&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">result</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">list</span><span style="color: #f8f8f2">(</span>
+      <span style="color: #f8f8f2">input</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">list</span><span style="color: #f8f8f2">(payload),</span>
+      <span style="color: #f8f8f2">reposnse</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">list</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;survival_probability&quot;</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">prediction,</span>
+                      <span style="color: #e6db74">&quot;survival_prediction&quot;</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">(prediction</span> <span style="color: #f92672">&gt;=</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">)</span>
+                      <span style="color: #f8f8f2">),</span>
+      <span style="color: #f8f8f2">status</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">200</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #f8f8f2">model_version</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MODEL_VERSION)</span>
+  <span style="color: #f8f8f2">}</span> <span style="color: #f8f8f2">else</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">result</span> <span style="color: #f92672">&lt;-</span> <span style="color: #a6e22e">list</span><span style="color: #f8f8f2">(</span>
+      <span style="color: #f8f8f2">input</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">list</span><span style="color: #f8f8f2">(Age</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Age,</span> <span style="color: #f8f8f2">Pclass</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Pclass,</span> <span style="color: #f8f8f2">Sex</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Sex),</span>
+      <span style="color: #f8f8f2">response</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">list</span><span style="color: #f8f8f2">(input_error</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">valid_input),</span>
+      <span style="color: #f8f8f2">status</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">400</span><span style="color: #f8f8f2">,</span>
+      <span style="color: #f8f8f2">model_version</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MODEL_VERSION)</span>
+  <span style="color: #f8f8f2">}</span>
 
-  return(result)
-}
-</code></pre>
+  <span style="color: #a6e22e">return</span><span style="color: #f8f8f2">(result)</span>
+<span style="color: #f8f8f2">}</span>
+</code></pre></div>
+
 
 <p>Compared to the rest of the code above, this function is definitely
 doing a lot more. First off, we specifically cast our input variables to
@@ -758,7 +781,7 @@ as a load balancer</li>
   </article>
 
     </main>
-    <footer class="bg-grey bottom-0 w-100 pa3" role="contentinfo">
+    <footer class="bg-dark-gray bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="//raybuhr.github.io/blog/" >
     &copy; 2019 the ray buhr blog

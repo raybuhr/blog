@@ -6,10 +6,19 @@
     <description>Recent content in   on the ray buhr blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jul 2019 21:55:00 -0500</lastBuildDate>
     
 	<atom:link href="//raybuhr.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blogdown (Part 2)</title>
+      <link>//raybuhr.github.io/blog/posts/blogdown_pt2/</link>
+      <pubDate>Tue, 02 Jul 2019 21:55:00 -0500</pubDate>
+      
+      <guid>//raybuhr.github.io/blog/posts/blogdown_pt2/</guid>
+      <description>I built this blog using R and the packages rmarkdown and blogdown a little over two years ago. I haven&amp;rsquo;t been very good about updating it since. A big reason why is that it was really annoying using blogdown! I really liked the idea of keeping everything in R. I still think rmarkdown is fantastic and still plan to use it, but I ditched the blogdown package and am using the command line static site generator hugo that blogdown called for me directly instead.</description>
+    </item>
     
     <item>
       <title>Picking a Second Programming Language to Learn After R</title>
